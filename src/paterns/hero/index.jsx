@@ -59,7 +59,7 @@ export default function LandingPage() {
 
       {/* Testimonials Section */}
       <section id="testimonials" className="testimonials">
-        <h2>What Our Clients Say</h2>
+        <h2>Why Choose Us?</h2>
         <div className="testimonial-grid">
           <div className="testimonial-card">
             <p>"Absolutely incredible! The performance is top-notch."</p>
