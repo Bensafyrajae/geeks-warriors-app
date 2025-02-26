@@ -5,7 +5,7 @@ export default function LandingPage() {
   return (
     <div className="landing-page">
       {/* Navigation */}
-      <nav>
+      <nav className="nav-bar">
         <div className="logo">
           <img src="/placeholder.svg" alt="Logo" width={40} height={40} />
           <span>Company</span>
