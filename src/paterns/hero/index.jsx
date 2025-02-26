@@ -7,8 +7,8 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="nav-bar">
         <div className="logo">
-          <img src="/placeholder.svg" alt="Logo" width={40} height={40} />
-          <span>Company</span>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJwAAACUCAMAAABRNbASAAAAk1BMVEX///8pquMOp+GCvuT///0pquErqOL///sAnN2Cv+AAltkAneETpuUPpuIAntwAod/V6fKAxOGczePq9Pff7/Oq1+eJw+GRyeLE4+/2+viSxeMwo9oAouRVst2dyuQloNu22elnuN9ar+JrsNtJs+Rzt95nt+ZDqNtkv+Jzvd+r1Ons9vImruBBrNkAjc4AlNy64OVFHIhzAAADgklEQVR4nO2ZbXOiMBCAE80LLwlSUQoniq1aTnue/f+/7hK0Tq/IjQeL8GGfmTrjDI2Pm7fdlRAEQRAEQRAEQRAEQRAEQRAEQRAEQW7BGLv89W1S5dNJssHZGaPZPB67z0lq3vRt8wUbqtmPhecrpTPPWSbpYIInCZNylQeKc2rgdOQsZ0wOw44RGS0nnJ7dKBWcqmA9jNAZiajQVukK59xZ9e11hqVLLejfcJqt2QD2hZSxmdOKnV6E/bsRMss1/Y5ZgZOXISy7l0klbkaOCmfWv1wUUF6JnPVTcf9yc/+mm+E17duNuOq2muAi7ElJ2nOiTEE219P3u51IyocuLw/cHuVHpakk6auum1a9tt/CPsTIww49VhKuxi/LzXi+rR5yFze9TpN4t1m+xeuUyce4WbnoUHgTs9i0yuhfN9fX7cp/eo4aCUFVlu9DKbtPpWzQSLJ0BKWXJKQG88CIXxIVLvzg+f0By04yeXC0qNkF3/eEuE65U7x3HjrG5Nzht1dZJXTXVxs9fYw6jxxbB3eYfdG6vlOF7Lj4kVF+n9sNnFXXyy6uuRHuCKXOQ9mpXZjfsxNu82sSd3veTYPGcmbZLdJOp/Wo7tqqtzCnj590WJUx8rv5rBqyZ+ijrux+sPLylumpceAsagcsV17z5ggxpGR2ahU5/QaqVl45Mox322K73UyT2rz3PrkNcORkmhx9bfeaoJPm2+ESOcngblizzqKdU5tP/i9c7CMG1Uexja18BGRGy+s/h2vysHDxmZUB6UG1Akzc0kW1nG+JWEC078z5wVwFGLUzPIslxP0vw7w+D28sJ2xy0tqNyadJu6PjJmLy1L5SNCujeWL5Tzu76loHLvTAJ7XEaz+vjEyzTuR4Nm0/rbVNmrYoF0QOfjtYRhBy40onejByptICvx7OqBggcusA8lq9wAX356R1FcYiD/6CsHgAjQnGCl3TfGuFLiREwnnweV1vsBl2LO4f2psR+6uWHQzOjttGIz9GAIFjknw4YGJXQecDpJ9jBhlnvKat2tQtcCVMnm6q6L0DtezOw2S7FKiZY+tpN1BAwROCa+8Jrkdn6jiZFDC1oVFzisTUXmDVl/2a0eF48pVWetQYrbXyT8dDxACL6k/FKNm7rjtujPln9+OddNITBpqIjppzEKM+6hcmBEEQBEEQBEEQBEEQBEEQBEEQBBkUfwC7ATDmuNbOWAAAAABJRU5ErkJggg==" alt="Logo" width={60} height={60} />
+          {/* <span>Company</span> */}
         </div>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>

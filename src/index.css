@@ -171,6 +171,12 @@ h2{
   border-radius: 7%;
 }
 /* Features */
+.feature-card{
+  display: flex;
+  justify-content: center;
+  flex-direction: column; 
+  margin: 50px;
+}
 .features-grid {
   display: flex;
   justify-content: center;
