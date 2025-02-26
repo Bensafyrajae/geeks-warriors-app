@@ -104,8 +104,31 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer>
-        <p>&copy; 2024 Company. All rights reserved.</p>
-      </footer>
+ 
+  <div class="footer-top">
+   
+    {/* <div class="footer-links">
+      <a href="#">About Us</a>
+      <a href="#">Services</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div> */}
+    
+   
+    {/* <div class="social-icons">
+      <a href="#" target="_blank" class="fab fa-twitter"></a>
+      <a href="#" target="_blank" class="fab fa-facebook-f"></a>
+      <a href="#" target="_blank" class="fab fa-linkedin-in"></a>
+      <a href="#" target="_blank" class="fab fa-github"></a>
+    </div> */}
+  </div>
+
+  
+  <div class="footer-bottom">
+    <p>&copy; 2024 Company. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+  </div>
+</footer>
+
     </div>
   );
 }
