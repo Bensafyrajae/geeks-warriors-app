@@ -26,12 +26,12 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-content">
-          <h1>Empower Your Business</h1>
-          <p>Innovative solutions to take your ideas to the next level.</p>
-          <button className="cta-button">Get Started</button>
+          <h2>Empower Your Business</h2>
+          <p>IWhy AWS : une infrastructure cloud évolutive, sécurisée et performante. Réduisez vos coûts, simplifiez la gestion et accélérez l’innovation. Passez au cloud dès aujourd’hui !" 🚀☁️</p>
+          <button className="login-btn btn">Get Started</button>
         </div>
         <div className="hero-image">
-          <img src="/placeholder.svg?height=500&width=500" alt="Hero" />
+          <img className="image" src="https://www.shutterstock.com/image-photo/cloud-service-files-storage-transfer-600nw-2492224549.jpg" alt="Hero" />
         </div>
       </section>
 
@@ -97,7 +97,7 @@ export default function LandingPage() {
             <input type="text" placeholder="Your Name" required />
             <input type="email" placeholder="Your Email" required />
             <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" className="submit-button">Send Message</button>
+            <button type="submit" className="login-btn">Send Message</button>
           </form>
         </div>
       </section>
