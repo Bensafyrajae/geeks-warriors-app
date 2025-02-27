@@ -1,8 +1,77 @@
 import React from "react";
+import { useState } from "react";
+import { Modal ,Group ,Button } from "@mantine/core";
 
 
 export default function LandingPage() {
+  const [opened, setOpened] = useState(false);
+  const [content, setContent] = useState('');
+  const [imageURL, setImageURL] = useState('');
+
+
+
+  const url = "http://localhost:3000/posts"
+
+  const postData = async ( data) => {
+    try {
+      const response = await fetch(url, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const result = await response.json(); // Parse the JSON response
+      return result;
+    } catch (error) {
+      console.error('Error posting data:', error);
+      throw error;
+    }
+  };
+
+  const handleSubmit = () => {
+    const data = {
+      image_url : imageURL ,
+      content : content,
+      user_id : "123",
+      createdAt : "1234",
+    }
+    postData(data);
+
+    console.log('Content:', content);
+    console.log('Image URL:', imageURL);
+  };
+  console.log(opened)
   return (
+    <>
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Add New Content"
+        size="md"
+      >
+        <input
+          label="Content"
+          placeholder="Enter content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        
+        <input
+          label="Image URL"
+          placeholder="Enter image URL"
+          value={imageURL}
+          onChange={(e) => setImageURL(e.target.value)}
+        />
+        <Group position="right" mt="md">
+          <Button onClick={handleSubmit}>Submit</Button>
+        </Group>
+      </Modal>
     <div className="landing-page">
       {/* Navigation */}
       <nav>
@@ -18,8 +87,10 @@ export default function LandingPage() {
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div className="auth-buttons">
-          <button className="login-btn">Login</button>
-          <button className="login-btn">Sign Up</button>
+          <button className="login-btn" onClick={()=>{
+            setOpened(true)
+          }}>Create a post</button>
+          
         </div>
       </nav>
 
@@ -35,27 +106,29 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Section Features */}
       <section id="features" className="features">
-        <h2>Why Choose Us?</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="icon">🚀</div>
-            <h3>Fast Performance</h3>
-            <p>Blazing-fast speed with optimized architecture.</p>
+          <h2>Why Choose Us?</h2>
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="icon">🚀</div>
+              <h3>Fast Performance</h3>
+              <p>Blazing-fast speed with optimized architecture.</p>
+            </div>
+            <div className="feature-card">
+              <div className="icon">🔒</div>
+              <h3>Security First</h3>
+              <p>Your data is protected with the latest security standards.</p>
+            </div>
+            <div className="feature-card">
+              <div className="icon">📱</div>
+              <h3>100% Responsive</h3>
+              <p>Optimized for all devices and screen sizes.</p>
+            </div>
           </div>
-          <div className="feature-card">
-            <div className="icon">🔒</div>
-            <h3>Security First</h3>
-            <p>Your data is protected with the latest security standards.</p>
-          </div>
-          <div className="feature-card">
-            <div className="icon">📱</div>
-            <h3>100% Responsive</h3>
-            <p>Optimized for all devices and screen sizes.</p>
-          </div>
-        </div>
-      </section>
+        </section>
+
+      
 
       {/* Testimonials Section */}
       <section id="testimonials" className="testimonials">
@@ -130,5 +203,7 @@ export default function LandingPage() {
 </footer>
 
     </div>
+    </>
+    
   );
 }

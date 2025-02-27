@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mantine/core": "^7.17.0",
+    "@mantine/hooks": "^7.17.0",
     "@tailwindcss/vite": "^4.0.9",
+    "axios": "^1.8.1",
     "bootstrap": "^5.3.3",
     "lucide-react": "^0.476.0",
     "react": "^19.0.0",
