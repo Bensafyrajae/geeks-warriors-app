@@ -221,20 +221,24 @@ h2{
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Section Contact */
 .contact {
   background-color: #f8f9fa;
   padding: 80px 20px;
   text-align: center;
 }
 
-.contact  {
+.contact h2 {
   font-size: 2rem;
   color: #333;
   margin-bottom: 20px;
 }
 
 .contact-container {
-  max-width: 600px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 90%;
   margin: 0 auto;
   background: white;
   padding: 30px;
@@ -246,6 +250,7 @@ h2{
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 40%;
 }
 
 .contact-form input,
@@ -275,6 +280,22 @@ h2{
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+
+/* Styles pour la carte */
+.map-container {
+  margin-top: 20px;
+  width: 50%;
+}
+.iframe{
+  width: 45%;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 10px;
 }
 
 /* FAQ */
@@ -342,82 +363,78 @@ h2{
 .section{
   margin-top: 10px;
 }
-/* Footer */
-/* Footer container */
-footer {
-  background-color: #c8c3c3;
-  color: white;
+.footer {
+  background-color: #e9ecef;
+  color: #3f3f3f;
   padding: 40px 20px;
-  text-align: center;
   font-family: 'Arial', sans-serif;
-  box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer top section (links and social icons) */
-footer .footer-top {
+.footer-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
 }
 
-footer .footer-top .footer-links,
-footer .footer-top .social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
 }
 
-footer .footer-links a,
-footer .social-icons a {
-  color: white;
-  margin: 0 15px;
-  font-size: 1.2rem;
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #0f78f1;
+}
+
+.footer-section p, .footer-section ul {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #434445;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-footer .footer-links a:hover,
-footer .social-icons a:hover {
-  color: #263437;
+.footer-section ul li a:hover {
+  color: #0f8bf1;
 }
 
-footer .social-icons a {
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #34495e;
+  margin-top: 20px;
+  font-size: 14px;
 }
 
-footer .social-icons a:hover {
-  transform: scale(1.1);
-}
-
-/* Footer bottom section (copy right) */
-footer .footer-bottom {
-  font-size: 0.9rem;
-  opacity: 0.8;
-}
-
-footer .footer-bottom a {
-  color: #263437;
-  text-decoration: none;
-}
-
-footer .footer-bottom a:hover {
-  text-decoration: underline;
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-  footer .footer-top {
-    flex-direction: column;
-    align-items: center;
+  .footer-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
   }
-  
-  footer .footer-links a,
-  footer .social-icons a {
-    margin: 10px 0;
+
+  .footer-section {
+      margin-bottom: 30px;
   }
 }
-
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -521,4 +538,8 @@ footer .footer-bottom a:hover {
 
 .add-post-button:active {
   transform: translateY(0);
+}
+h2{
+  color: #1d4ed8;
+  text-align: center;
 }

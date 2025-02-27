@@ -76,8 +76,8 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav>
         <div className="logo">
-          <img src="/placeholder.svg" alt="Logo" width={40} height={40} />
-          <span>Company</span>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO4AAACUCAMAAACjieW3AAAAclBMVEX///8Bk971/P4Aj92KxeoAjdwAkd0AitsAhdoAh9q62fLr9fvz+f35/P7a6vjC3fMsl96z1fBAouKbye2Du+jN5PXd7vlmq+SLwOrm8fqRxOterOSfze2SyOp0tuZqseVWpuJToOEzneF4s+fi9furzu4UPvirAAAEjklEQVR4nO2bC3OiMBCAC+kGeT8ElMcB0vr//+JpNmhpvRNt0ODsNx3bTktml2w2+0je3giCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIIgn4wZO/ef9T+0E7rNFmRsvbCJmWQAMwAIWtbH/bJFmw80aewXcOMOZvWqyl5xk16lsMH4Cdhe/nsJhyy4pKxSGjfNs8RSTRmMr5nyksLF9pQkuOnZSj8PquIDlt9Mi7oJnC6mMMIKTWpCkzqdrmqbrOmkCTE4zZ1H4bDEV4UQMlWXGrsxHf8rLnQGDfcdPkk8todSWQ1d7P/5qrjtp06+hb9aDnNpvMzuQl8P7YNmDZVOPKbWF/p+bjR/2OL8sWrx/bi3UpP+f5y2kL4PNw+Sahxi15f2VeYvk+i0fI9ZMuKgGN65ZqYv2zJNFb79bVIJf90EZvhjYLjhFChKhg1VP+N+9CDj4f9e45qxxxjZTHK7biu0I1oud3qICsXCn5TuOMGeWFDNLNRuhsE/4+BlLXaRBy19q7OyXYnKjqbEhTq+VLtOavQxtubscO154IEFnNdEYdCKIy48OI4d08kMNOqupr0cbnDYxGDCMMKbsQvIxEUraC1u8TsLPxRkeTU9zCvGC7PcZZVNO3tmjqlR/w8ZiCE9ezSecavw9HxccWWJOf1oEzqybTTrVmOW5BsfgWIm6aa7QNSfmQrYiPz3V4CyjKuvYieNbKhQYYhttWsb5AlROh7KT1ddBcbvACVZxDmYR7VrtS+21hdoCq++rwkh1Rc7IeaL3jhTiuuWsujcuOqsrBrIrjSOOokNtYXoY9Z1k1Eo5xM8a19rXTNYj7h+it60jcHLvTNvas6xcwG8Smv1akFaG9AIHW9HTY/lrUXNkk/Ofy6McePO9IogTawhCtbTnomMiIVBlfH5to99inY7ljdAWsn3cEDJeIR92YQ3zfX9rKZ3cI27FdDVnWYnYKa1E5GKBGFaqXX3DRUfVqh0Vq1fc0K72nK+E3e0VD9tgfUP1sL8mRHVVN2ixlXJ/VDoXtXDM8Kl63I2wZtCt74tBhnp1se2y0i1VmEvdDNXVLXKOMcpQ7kI/ha+y1qrH/SWZcFVMeTxvorq6NfULoa5xf6r7DzRVFw8b8J3qcdGY7emdiMfgNzBLeOugq9LuwBUesbmh/zWNFNXVLgcMMLzt1c6DtxOj6ne8zEsxSWiUxnt4PsVq9Mt4Q5xeUJrxbrAnqF/COzRMOCiUTZx2MEDL8k0mD76p0zfGLjFol/8J1vKcLt+rWb97PPjLKh0n92DOLfb/OPtQ4J+9LZcnDHXLDwb8ftA3an6ZLPjxTrYSWKNGuBlwo9PFAqsvM9cz76II02jom0Cn3yZ0wj3foOHWyh419CbDv1ydg1vOOjweNx1diOL38OVxqLSLp8Z4+8T61ra8G+Bb3WpyPwm2oERhZnehxuv2hB9s+fji6u1wWEXLufhphm3E4AA7frLj7WT2/bfha/iQPzJxk9lotEtxr5Bncf1+F3GoZxxFEARBEARBEARBEARBEARBEARBEARBEARBEATxevwF5PMzewDtvA0AAAAASUVORK5CYII=" alt="Logo" width={100} height={50} />
+         
         </div>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
@@ -160,47 +160,44 @@ export default function LandingPage() {
           <h3>Is there a free trial available?</h3>
           <p>Yes! You can start with a 14-day free trial, no credit card required.</p>
         </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="contact">
-        <h2>Contact Us</h2>
-        <div className="contact-container">
-          <form className="contact-form">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" className="login-btn">Send Message</button>
-          </form>
+        <div className="faq-item">
+          <h3>How does the platform work?</h3>
+          <p>Our platform simplifies your workflow with advanced automation.</p>
+        </div>
+        <div className="faq-item">
+          <h3>How does the platform work?</h3>
+          <p>Our platform simplifies your workflow with advanced automation.</p>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer>
- 
-  <div class="footer-top">
-   
-    {/* <div class="footer-links">
-      <a href="#">About Us</a>
-      <a href="#">Services</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
-    </div> */}
-    
-   
-    {/* <div class="social-icons">
-      <a href="#" target="_blank" class="fab fa-twitter"></a>
-      <a href="#" target="_blank" class="fab fa-facebook-f"></a>
-      <a href="#" target="_blank" class="fab fa-linkedin-in"></a>
-      <a href="#" target="_blank" class="fab fa-github"></a>
-    </div> */}
-  </div>
+     {/* Contact Section */}
+<section id="contact" className="contact">
+  <h2>Contact Us</h2>
+  <div className="contact-container">
+    {/* Formulaire de contact */}
+    <form className="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" className="submit-button">Send Message</button>
+    </form>
 
-  
-  <div class="footer-bottom">
-    <p>&copy; 2024 Company. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+    {/* Carte Google Maps */}
+    <div className="map-container">
+      <iframe
+        title="Google Maps"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d26601.245983087912!2d-7.643962!3d33.54932949999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sma!4v1740658648716!5m2!1sfr!2sma" 
+        width="100%"
+        height="550"
+        style={{ border: 0, borderRadius: "10px", marginTop: "4px" }}
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
+    </div>
   </div>
-</footer>
+</section>
+
+     
 
     </div>
     </>

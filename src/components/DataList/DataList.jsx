@@ -27,7 +27,10 @@ const DataList = ( ) => {
 
     console.log("posts ==== >"+posts)
   return (
+    <>
+    <h2> Nos post</h2>
     <div className="data-list">
+      
       {posts.map((item) => (
         <div key={item._id} className="data-item">
           <img src={item.image_url} alt={item.content} className="data-image" />
@@ -38,6 +41,7 @@ const DataList = ( ) => {
         </div>
       ))}
     </div>
+    </>
   );
 };
 
