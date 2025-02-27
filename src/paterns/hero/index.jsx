@@ -1,13 +1,82 @@
 import React from "react";
+import { useState } from "react";
+import { Modal ,Group ,Button } from "@mantine/core";
 
 export default function LandingPage() {
+  const [opened, setOpened] = useState(false);
+  const [content, setContent] = useState('');
+  const [imageURL, setImageURL] = useState('');
+
+
+
+  const url = "http://localhost:3000/posts"
+
+  const postData = async ( data) => {
+    try {
+      const response = await fetch(url, {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const result = await response.json(); // Parse the JSON response
+      return result;
+    } catch (error) {
+      console.error('Error posting data:', error);
+      throw error;
+    }
+  };
+
+  const handleSubmit = () => {
+    const data = {
+      image_url : imageURL ,
+      content : content,
+      user_id : "123",
+      createdAt : "1234",
+    }
+    postData(data);
+
+    console.log('Content:', content);
+    console.log('Image URL:', imageURL);
+  };
+  console.log(opened)
   return (
+    <>
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Add New Content"
+        size="md"
+      >
+        <input
+          label="Content"
+          placeholder="Enter content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        
+        <input
+          label="Image URL"
+          placeholder="Enter image URL"
+          value={imageURL}
+          onChange={(e) => setImageURL(e.target.value)}
+        />
+        <Group position="right" mt="md">
+          <Button onClick={handleSubmit}>Submit</Button>
+        </Group>
+      </Modal>
     <div className="landing-page">
       {/* Navigation */}
       <nav className="nav-bar">
         <div className="logo">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJwAAACUCAMAAABRNbASAAAAk1BMVEX///8pquMOp+GCvuT///0pquErqOL///sAnN2Cv+AAltkAneETpuUPpuIAntwAod/V6fKAxOGczePq9Pff7/Oq1+eJw+GRyeLE4+/2+viSxeMwo9oAouRVst2dyuQloNu22elnuN9ar+JrsNtJs+Rzt95nt+ZDqNtkv+Jzvd+r1Ons9vImruBBrNkAjc4AlNy64OVFHIhzAAADgklEQVR4nO2ZbXOiMBCAE80LLwlSUQoniq1aTnue/f+/7hK0Tq/IjQeL8GGfmTrjDI2Pm7fdlRAEQRAEQRAEQRAEQRAEQRAEQRAEQW7BGLv89W1S5dNJssHZGaPZPB67z0lq3vRt8wUbqtmPhecrpTPPWSbpYIInCZNylQeKc2rgdOQsZ0wOw44RGS0nnJ7dKBWcqmA9jNAZiajQVukK59xZ9e11hqVLLejfcJqt2QD2hZSxmdOKnV6E/bsRMss1/Y5ZgZOXISy7l0klbkaOCmfWv1wUUF6JnPVTcf9yc/+mm+E17duNuOq2muAi7ElJ2nOiTEE219P3u51IyocuLw/cHuVHpakk6auum1a9tt/CPsTIww49VhKuxi/LzXi+rR5yFze9TpN4t1m+xeuUyce4WbnoUHgTs9i0yuhfN9fX7cp/eo4aCUFVlu9DKbtPpWzQSLJ0BKWXJKQG88CIXxIVLvzg+f0By04yeXC0qNkF3/eEuE65U7x3HjrG5Nzht1dZJXTXVxs9fYw6jxxbB3eYfdG6vlOF7Lj4kVF+n9sNnFXXyy6uuRHuCKXOQ9mpXZjfsxNu82sSd3veTYPGcmbZLdJOp/Wo7tqqtzCnj590WJUx8rv5rBqyZ+ijrux+sPLylumpceAsagcsV17z5ggxpGR2ahU5/QaqVl45Mox322K73UyT2rz3PrkNcORkmhx9bfeaoJPm2+ESOcngblizzqKdU5tP/i9c7CMG1Uexja18BGRGy+s/h2vysHDxmZUB6UG1Akzc0kW1nG+JWEC078z5wVwFGLUzPIslxP0vw7w+D28sJ2xy0tqNyadJu6PjJmLy1L5SNCujeWL5Tzu76loHLvTAJ7XEaz+vjEyzTuR4Nm0/rbVNmrYoF0QOfjtYRhBy40onejByptICvx7OqBggcusA8lq9wAX356R1FcYiD/6CsHgAjQnGCl3TfGuFLiREwnnweV1vsBl2LO4f2psR+6uWHQzOjttGIz9GAIFjknw4YGJXQecDpJ9jBhlnvKat2tQtcCVMnm6q6L0DtezOw2S7FKiZY+tpN1BAwROCa+8Jrkdn6jiZFDC1oVFzisTUXmDVl/2a0eF48pVWetQYrbXyT8dDxACL6k/FKNm7rjtujPln9+OddNITBpqIjppzEKM+6hcmBEEQBEEQBEEQBEEQBEEQBEEQBBkUfwC7ATDmuNbOWAAAAABJRU5ErkJggg==" alt="Logo" width={60} height={60} />
-          {/* <span>Company</span> */}
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO4AAACUCAMAAACjieW3AAAAclBMVEX///8Bk971/P4Aj92KxeoAjdwAkd0AitsAhdoAh9q62fLr9fvz+f35/P7a6vjC3fMsl96z1fBAouKbye2Du+jN5PXd7vlmq+SLwOrm8fqRxOterOSfze2SyOp0tuZqseVWpuJToOEzneF4s+fi9furzu4UPvirAAAEjklEQVR4nO2bC3OiMBCAC+kGeT8ElMcB0vr//+JpNmhpvRNt0ODsNx3bTktml2w2+0je3giCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIIgn4wZO/ef9T+0E7rNFmRsvbCJmWQAMwAIWtbH/bJFmw80aewXcOMOZvWqyl5xk16lsMH4Cdhe/nsJhyy4pKxSGjfNs8RSTRmMr5nyksLF9pQkuOnZSj8PquIDlt9Mi7oJnC6mMMIKTWpCkzqdrmqbrOmkCTE4zZ1H4bDEV4UQMlWXGrsxHf8rLnQGDfcdPkk8todSWQ1d7P/5qrjtp06+hb9aDnNpvMzuQl8P7YNmDZVOPKbWF/p+bjR/2OL8sWrx/bi3UpP+f5y2kL4PNw+Sahxi15f2VeYvk+i0fI9ZMuKgGN65ZqYv2zJNFb79bVIJf90EZvhjYLjhFChKhg1VP+N+9CDj4f9e45qxxxjZTHK7biu0I1oud3qICsXCn5TuOMGeWFDNLNRuhsE/4+BlLXaRBy19q7OyXYnKjqbEhTq+VLtOavQxtubscO154IEFnNdEYdCKIy48OI4d08kMNOqupr0cbnDYxGDCMMKbsQvIxEUraC1u8TsLPxRkeTU9zCvGC7PcZZVNO3tmjqlR/w8ZiCE9ezSecavw9HxccWWJOf1oEzqybTTrVmOW5BsfgWIm6aa7QNSfmQrYiPz3V4CyjKuvYieNbKhQYYhttWsb5AlROh7KT1ddBcbvACVZxDmYR7VrtS+21hdoCq++rwkh1Rc7IeaL3jhTiuuWsujcuOqsrBrIrjSOOokNtYXoY9Z1k1Eo5xM8a19rXTNYj7h+it60jcHLvTNvas6xcwG8Smv1akFaG9AIHW9HTY/lrUXNkk/Ofy6McePO9IogTawhCtbTnomMiIVBlfH5to99inY7ljdAWsn3cEDJeIR92YQ3zfX9rKZ3cI27FdDVnWYnYKa1E5GKBGFaqXX3DRUfVqh0Vq1fc0K72nK+E3e0VD9tgfUP1sL8mRHVVN2ixlXJ/VDoXtXDM8Kl63I2wZtCt74tBhnp1se2y0i1VmEvdDNXVLXKOMcpQ7kI/ha+y1qrH/SWZcFVMeTxvorq6NfULoa5xf6r7DzRVFw8b8J3qcdGY7emdiMfgNzBLeOugq9LuwBUesbmh/zWNFNXVLgcMMLzt1c6DtxOj6ne8zEsxSWiUxnt4PsVq9Mt4Q5xeUJrxbrAnqF/COzRMOCiUTZx2MEDL8k0mD76p0zfGLjFol/8J1vKcLt+rWb97PPjLKh0n92DOLfb/OPtQ4J+9LZcnDHXLDwb8ftA3an6ZLPjxTrYSWKNGuBlwo9PFAqsvM9cz76II02jom0Cn3yZ0wj3foOHWyh419CbDv1ydg1vOOjweNx1diOL38OVxqLSLp8Z4+8T61ra8G+Bb3WpyPwm2oERhZnehxuv2hB9s+fji6u1wWEXLufhphm3E4AA7frLj7WT2/bfha/iQPzJxk9lotEtxr5Bncf1+F3GoZxxFEARBEARBEARBEARBEARBEARBEARBEARBEATxevwF5PMzewDtvA0AAAAASUVORK5CYII=" alt="Logo" width={100} height={50} />
+         
         </div>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
@@ -17,8 +86,10 @@ export default function LandingPage() {
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div className="auth-buttons">
-          <button className="login-btn">Login</button>
-          <button className="login-btn">Sign Up</button>
+          <button className="login-btn" onClick={()=>{
+            setOpened(true)
+          }}>Create a post</button>
+          
         </div>
       </nav>
 
@@ -34,27 +105,29 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Section Features */}
       <section id="features" className="features">
-        <h2>Over views our services </h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="icon">🚀</div>
-            <h3>Technology Consulting</h3>
-            <p>Expertise in a IT consultancy for the many companies, for their different working areas.</p>
+          <h2>Why Choose Us?</h2>
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="icon">🚀</div>
+              <h3>Fast Performance</h3>
+              <p>Blazing-fast speed with optimized architecture.</p>
+            </div>
+            <div className="feature-card">
+              <div className="icon">🔒</div>
+              <h3>Security First</h3>
+              <p>Your data is protected with the latest security standards.</p>
+            </div>
+            <div className="feature-card">
+              <div className="icon">📱</div>
+              <h3>100% Responsive</h3>
+              <p>Optimized for all devices and screen sizes.</p>
+            </div>
           </div>
-          <div className="feature-card">
-            <div className="icon">🔒</div>
-            <h3>Cloud solutions & IT security</h3>
-            <p>Expertise in cloud solutions and IT security for various companies in different sectors.</p>
-          </div>
-          <div className="feature-card">
-            <div className="icon">📱</div>
-            <h3>Data Tracking Security</h3>
-            <p>Expertise in securing data tracking systems for companies across various industries.</p>
-          </div>
-        </div>
-      </section>
+        </section>
+
+      
 
       {/* Testimonials Section */}
       <section id="testimonials" className="testimonials">
@@ -86,41 +159,47 @@ export default function LandingPage() {
           <h3>Is there a free trial available?</h3>
           <p>Yes! You can start with a 14-day free trial, no credit card required.</p>
         </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="contact">
-        <h2>Contact Us</h2>
-        <div className="contact-container">
-          <form className="contact-form">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" required></textarea>
-            <button type="submit" className="login-btn">Send Message</button>
-          </form>
+        <div className="faq-item">
+          <h3>How does the platform work?</h3>
+          <p>Our platform simplifies your workflow with advanced automation.</p>
+        </div>
+        <div className="faq-item">
+          <h3>How does the platform work?</h3>
+          <p>Our platform simplifies your workflow with advanced automation.</p>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="footer-top">
-          <div className="footer-links">
-            <a href="#">About Us</a>
-            <a href="#">Services</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
-          </div>
-          <div className="social-icons">
-            <a href="#" target="_blank" className="fab fa-twitter"></a>
-            <a href="#" target="_blank" className="fab fa-facebook-f"></a>
-            <a href="#" target="_blank" className="fab fa-linkedin-in"></a>
-            <a href="#" target="_blank" className="fab fa-github"></a>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2024 Company. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
-        </div>
-      </footer>
+     {/* Contact Section */}
+<section id="contact" className="contact">
+  <h2>Contact Us</h2>
+  <div className="contact-container">
+    {/* Formulaire de contact */}
+    <form className="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" className="submit-button">Send Message</button>
+    </form>
+
+    {/* Carte Google Maps */}
+    <div className="map-container">
+      <iframe
+        title="Google Maps"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d26601.245983087912!2d-7.643962!3d33.54932949999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sma!4v1740658648716!5m2!1sfr!2sma" 
+        width="100%"
+        height="550"
+        style={{ border: 0, borderRadius: "10px", marginTop: "4px" }}
+        allowFullScreen
+        loading="lazy"
+      ></iframe>
     </div>
+  </div>
+</section>
+
+     
+
+    </div>
+    </>
+    
   );
 }
