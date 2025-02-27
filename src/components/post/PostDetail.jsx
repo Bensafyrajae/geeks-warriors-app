@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
 import "./Posts.css"
-import { formatDistanceToNow } from "date-fns"
-import { fr } from "date-fns/locale"
+// import { formatDistanceToNow } from "date-fns"
+// import { fr } from "date-fns/locale"
 
 const PostDetail = () => {
   const { id } = useParams()
@@ -159,10 +159,10 @@ const PostDetail = () => {
         <div className="post-header">
           <div>
             <h1 className="post-title">{post.title}</h1>
-            <p className="post-meta">
+            {/* <p className="post-meta">
               Par {post.author.username} •{" "}
               {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true, locale: fr })}
-            </p>
+            </p> */}
           </div>
           {currentUser.id === post.author.id && (
             <div className="post-actions">
@@ -211,9 +211,9 @@ const PostDetail = () => {
                     <div className="avatar">{comment.author.username.charAt(0).toUpperCase()}</div>
                     <div className="comment-meta">
                       <p className="author-name">{comment.author.username}</p>
-                      <p className="comment-time">
+                      {/* <p className="comment-time">
                         {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true, locale: fr })}
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   {currentUser.id === comment.author.id && (

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import "./Posts.css"
-import { formatDistanceToNow } from "date-fns"
+// import { formatDistanceToNow } from "date-fns"
 import { fr } from "date-fns/locale"
 
 const PostList = () => {
@@ -111,10 +111,10 @@ const PostList = () => {
               <div className="post-header">
                 <div>
                   <h2 className="post-title">{post.title}</h2>
-                  <p className="post-meta">
+                  {/* <p className="post-meta">
                     Par {post.author.username} •{" "}
                     {formatDistanceToNow(new Date(post.createdAt), { addSuffix: true, locale: fr })}
-                  </p>
+                  </p> */}
                 </div>
                 {currentUser.id === post.author.id && (
                   <div className="post-actions">
