@@ -12,7 +12,7 @@ export default function LandingPage() {
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#testimonials">Why us?</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -25,9 +25,9 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section id="home" className="hero">
         <div className="hero-content">
-          <h2>Empower Your Business</h2>
-          <p>IWhy AWS : une infrastructure cloud évolutive, sécurisée et performante. Réduisez vos coûts, simplifiez la gestion et accélérez l’innovation. Passez au cloud dès aujourd’hui !" 🚀☁️</p>
-          <button className="login-btn btn">Get Started</button>
+          <h2>Excellent IT services for your success </h2>
+          <p className="yasser">WhyAWS is a blog offering Exclusive informations about Technology and Provides IT Solutions & Services 🚀☁️</p>
+          <button className="login-btn btn">Read more</button>
         </div>
         <div className="hero-image">
           <img className="image" src="https://www.shutterstock.com/image-photo/cloud-service-files-storage-transfer-600nw-2492224549.jpg" alt="Hero" />
@@ -36,7 +36,7 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <section id="features" className="features">
-        <h2>Over views our services </h2>
+        <h2>Overview of our services</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="icon">🚀</div>
@@ -44,12 +44,12 @@ export default function LandingPage() {
             <p>Expertise in a IT consultancy for the many companies, for their different working areas.</p>
           </div>
           <div className="feature-card">
-            <div className="icon">🔒</div>
+            <div className="icon">📱</div>
             <h3>Cloud solutions & IT security</h3>
             <p>Expertise in cloud solutions and IT security for various companies in different sectors.</p>
           </div>
           <div className="feature-card">
-            <div className="icon">📱</div>
+            <div className="icon">🔒</div>
             <h3>Data Tracking Security</h3>
             <p>Expertise in securing data tracking systems for companies across various industries.</p>
           </div>
@@ -58,19 +58,44 @@ export default function LandingPage() {
 
       {/* Testimonials Section */}
       <section id="testimonials" className="testimonials">
-        <h2>Why Choose Us?</h2>
+        <h2>Why Choosing Us?</h2>
         <div className="testimonial-grid">
           <div className="testimonial-card">
-            <p>"Absolutely incredible! The performance is top-notch."</p>
-            <h4>- hajar. -</h4>
+            
+            <h4>🔐 Securing Access</h4>
+            <p>Use IAM (Identity and Access Management) to control access to AWS services and resources.</p>
+            <br></br>
+            <p>Implement MFA (Multi-Factor Authentication) for additional security when accessing the AWS Management Console.</p>
           </div>
           <div className="testimonial-card">
-            <p>"A game-changer for our business. Highly recommend!"</p>
-            <h4>- ANAS. -</h4>
+            <h4>💻 Adding a Compute Layer Using Amazon EC2</h4>
+            <p>Choose the appropriate Amazon Machine Image (AMI) for your EC2 instance.</p>
+            <br></br>
+            <p>Configure security groups to control inbound and outbound traffic to the EC2 instance.</p>
           </div>
           <div className="testimonial-card">
-            <p>"Superb experience with exceptional customer service."</p>
-            <h4>- RAJAA. -</h4>
+            <h4>♻️Adding a Compute Layer Using Amazon EC2</h4>
+            <p>Choose the appropriate database service based on your needs, such as Amazon RDS, Amazon DynamoDB, or Amazon Aurora.</p>
+            <br></br>
+            <p>Implement high availability and disaster recovery solutions for the database layer using features like Multi-AZ deployments and automated backups.</p>            
+          </div>
+          <div className="testimonial-card">
+            <h4>🛜 Connecting Networks</h4>
+            <p>Utilize Amazon VPC to create and manage virtual private networks.</p>
+            <br></br>
+            <p>Implement networking services such as Route 53, CloudFront, and API Gateway for connecting networks within the AWS environment.</p>
+          </div>
+          <div className="testimonial-card">
+            <h4>📊 Securing User, Application, and Data Access</h4>
+            <p>Utilize Web Application Firewall (WAF) to protect web applications from common web exploits.</p>
+            <br></br>
+            <p>Secure application resources using AWS CloudTrail for auditing and AWS Config for resource inventory and configuration monitoring.</p>            
+          </div>
+          <div className="testimonial-card">
+            <h4>🛠️ Implementing Monitoring, Elasticity, and High Availability</h4>
+            <p>Design for high availability by utilizing multiple Availability Zones and implementing fault-tolerant architectures.</p>
+            <br></br>
+            <p>Utilize AWS Trusted Advisor to identify potential cost savings, security vulnerabilities, and performance improvements.</p>            
           </div>
         </div>
       </section>

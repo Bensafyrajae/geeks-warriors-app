@@ -56,8 +56,11 @@ nav {
   height: 100vh;
 }
 h2{
-  color: #1d4ed8;
+  color: #0216ef;
   text-align: center;
+}
+.yasser{
+  color: #000000e3;
 }
 .hero-content {
   max-width: 600px;
@@ -89,11 +92,15 @@ h2{
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
-/* 
+ 
+.hero .login-btn {
+  background-color: #f97909;
+  
+} 
 .hero .login-btn:hover {
-  background-color: #e55a4e;
-  transform: translateY(-3px);
-} */
+  background-color: #1109f9;
+  
+} 
 
 .hero-image {
   position: relative;
@@ -200,19 +207,23 @@ h2{
   padding: 5rem;
   background: #f8fafc;
   text-align: center;
+  
 }
 
 .testimonial-grid {
-  display: flex;
+  display: grid ;
   gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
+  flex-wrap: wrap;
+  background-color: rgb(222, 225, 233);
 }
 
 .testimonial-card {
   background: white;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 6px rgba(0, 0, 0, 0.1);
 }
 
 .contact {
