@@ -129,21 +129,46 @@ export default function LandingPage() {
 
       
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="testimonials">
-        <h2>What Our Clients Say</h2>
+     {/* Testimonials Section */}
+     <section id="testimonials" className="testimonials">
+        <h2>Why Choosing Us?</h2>
         <div className="testimonial-grid">
           <div className="testimonial-card">
-            <p>"Absolutely incredible! The performance is top-notch."</p>
-            <h4>- hajar. -</h4>
+            
+            <h4>🔐 Securing Access</h4>
+            <p>Use IAM (Identity and Access Management) to control access to AWS services and resources.</p>
+            <br></br>
+            <p>Implement MFA (Multi-Factor Authentication) for additional security when accessing the AWS Management Console.</p>
           </div>
           <div className="testimonial-card">
-            <p>"A game-changer for our business. Highly recommend!"</p>
-            <h4>- ANAS. -</h4>
+            <h4>💻 Adding a Compute Layer Using Amazon EC2</h4>
+            <p>Choose the appropriate Amazon Machine Image (AMI) for your EC2 instance.</p>
+            <br></br>
+            <p>Configure security groups to control inbound and outbound traffic to the EC2 instance.</p>
           </div>
           <div className="testimonial-card">
-            <p>"Superb experience with exceptional customer service."</p>
-            <h4>- RAJAA. -</h4>
+            <h4>♻Adding a Compute Layer Using Amazon EC2</h4>
+            <p>Choose the appropriate database service based on your needs, such as Amazon RDS, Amazon DynamoDB, or Amazon Aurora.</p>
+            <br></br>
+            <p>Implement high availability and disaster recovery solutions for the database layer using features like Multi-AZ deployments and automated backups.</p>            
+          </div>
+          <div className="testimonial-card">
+            <h4>🛜 Connecting Networks</h4>
+            <p>Utilize Amazon VPC to create and manage virtual private networks.</p>
+            <br></br>
+            <p>Implement networking services such as Route 53, CloudFront, and API Gateway for connecting networks within the AWS environment.</p>
+          </div>
+          <div className="testimonial-card">
+            <h4>📊 Securing User, Application, and Data Access</h4>
+            <p>Utilize Web Application Firewall (WAF) to protect web applications from common web exploits.</p>
+            <br></br>
+            <p>Secure application resources using AWS CloudTrail for auditing and AWS Config for resource inventory and configuration monitoring.</p>            
+          </div>
+          <div className="testimonial-card">
+            <h4>🛠 Implementing Monitoring, Elasticity, and High Availability</h4>
+            <p>Design for high availability by utilizing multiple Availability Zones and implementing fault-tolerant architectures.</p>
+            <br></br>
+            <p>Utilize AWS Trusted Advisor to identify potential cost savings, security vulnerabilities, and performance improvements.</p>            
           </div>
         </div>
       </section>

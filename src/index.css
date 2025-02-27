@@ -548,3 +548,25 @@ h2{
   color: #1d4ed8;
   text-align: center;
 }
+/* Testimonials */
+.testimonials {
+  padding: 5rem;
+  background: #f8fafc;
+  text-align: center;
+  
+}
+
+.testimonial-grid {
+  display: grid ;
+  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 20px 6px rgba(0, 0, 0, 0.1);
+}
