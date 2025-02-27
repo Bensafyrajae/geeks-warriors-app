@@ -339,7 +339,7 @@ h2{
 /* Footer */
 /* Footer container */
 footer {
-  background-color: #1d4ed8;
+  background: linear-gradient(to right, #a3bedb, #c5cccd);
   color: white;
   padding: 40px 20px;
   text-align: center;
@@ -436,7 +436,8 @@ footer .footer-bottom a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #1d4ed8;
+  background: linear-gradient(to right, #a3bedb, #c5cccd);
+
   color: #fff;
 }
 
@@ -455,7 +456,7 @@ footer .footer-bottom a:hover {
 .footer-bottom {
   text-align: center;
   padding: 10px;
-  background-color: #1d4ed8;
+  background: linear-gradient(to right, #a3bedb, #c5cccd);
   color: #000000;
 }
 
