@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export default function LandingPage() {
   return (
     <div className="landing-page">
@@ -37,22 +36,22 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <section id="features" className="features">
-        <h2>Why Choose Us?</h2>
+        <h2>Over views our services </h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="icon">🚀</div>
-            <h3>Fast Performance</h3>
-            <p>Blazing-fast speed with optimized architecture.</p>
+            <h3>Technology Consulting</h3>
+            <p>Expertise in a IT consultancy for the many companies, for their different working areas.</p>
           </div>
           <div className="feature-card">
             <div className="icon">🔒</div>
-            <h3>Security First</h3>
-            <p>Your data is protected with the latest security standards.</p>
+            <h3>Cloud solutions & IT security</h3>
+            <p>Expertise in cloud solutions and IT security for various companies in different sectors.</p>
           </div>
           <div className="feature-card">
             <div className="icon">📱</div>
-            <h3>100% Responsive</h3>
-            <p>Optimized for all devices and screen sizes.</p>
+            <h3>Data Tracking Security</h3>
+            <p>Expertise in securing data tracking systems for companies across various industries.</p>
           </div>
         </div>
       </section>
@@ -63,15 +62,15 @@ export default function LandingPage() {
         <div className="testimonial-grid">
           <div className="testimonial-card">
             <p>"Absolutely incredible! The performance is top-notch."</p>
-            <h4>- Sarah M.</h4>
+            <h4>- hajar. -</h4>
           </div>
           <div className="testimonial-card">
             <p>"A game-changer for our business. Highly recommend!"</p>
-            <h4>- Alex T.</h4>
+            <h4>- ANAS. -</h4>
           </div>
           <div className="testimonial-card">
             <p>"Superb experience with exceptional customer service."</p>
-            <h4>- Linda W.</h4>
+            <h4>- RAJAA. -</h4>
           </div>
         </div>
       </section>
@@ -104,31 +103,24 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer>
- 
-  <div class="footer-top">
-   
-    {/* <div class="footer-links">
-      <a href="#">About Us</a>
-      <a href="#">Services</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
-    </div> */}
-    
-   
-    {/* <div class="social-icons">
-      <a href="#" target="_blank" class="fab fa-twitter"></a>
-      <a href="#" target="_blank" class="fab fa-facebook-f"></a>
-      <a href="#" target="_blank" class="fab fa-linkedin-in"></a>
-      <a href="#" target="_blank" class="fab fa-github"></a>
-    </div> */}
-  </div>
-
-  
-  <div class="footer-bottom">
-    <p>&copy; 2024 Company. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
-  </div>
-</footer>
-
+        <div className="footer-top">
+          <div className="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </div>
+          <div className="social-icons">
+            <a href="#" target="_blank" className="fab fa-twitter"></a>
+            <a href="#" target="_blank" className="fab fa-facebook-f"></a>
+            <a href="#" target="_blank" className="fab fa-linkedin-in"></a>
+            <a href="#" target="_blank" className="fab fa-github"></a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2024 Company. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+        </div>
+      </footer>
     </div>
   );
 }
