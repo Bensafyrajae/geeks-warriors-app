@@ -216,7 +216,6 @@ h2{
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   flex-wrap: wrap;
-  background-color: rgb(222, 225, 233);
 }
 
 .testimonial-card {
