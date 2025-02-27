@@ -1,14 +1,13 @@
 import React from "react";
 
-
 export default function LandingPage() {
   return (
     <div className="landing-page">
       {/* Navigation */}
       <nav className="nav-bar">
         <div className="logo">
-          <img src="/placeholder.svg" alt="Logo" width={40} height={40} />
-          <span>Company</span>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJwAAACUCAMAAABRNbASAAAAk1BMVEX///8pquMOp+GCvuT///0pquErqOL///sAnN2Cv+AAltkAneETpuUPpuIAntwAod/V6fKAxOGczePq9Pff7/Oq1+eJw+GRyeLE4+/2+viSxeMwo9oAouRVst2dyuQloNu22elnuN9ar+JrsNtJs+Rzt95nt+ZDqNtkv+Jzvd+r1Ons9vImruBBrNkAjc4AlNy64OVFHIhzAAADgklEQVR4nO2ZbXOiMBCAE80LLwlSUQoniq1aTnue/f+/7hK0Tq/IjQeL8GGfmTrjDI2Pm7fdlRAEQRAEQRAEQRAEQRAEQRAEQRAEQW7BGLv89W1S5dNJssHZGaPZPB67z0lq3vRt8wUbqtmPhecrpTPPWSbpYIInCZNylQeKc2rgdOQsZ0wOw44RGS0nnJ7dKBWcqmA9jNAZiajQVukK59xZ9e11hqVLLejfcJqt2QD2hZSxmdOKnV6E/bsRMss1/Y5ZgZOXISy7l0klbkaOCmfWv1wUUF6JnPVTcf9yc/+mm+E17duNuOq2muAi7ElJ2nOiTEE219P3u51IyocuLw/cHuVHpakk6auum1a9tt/CPsTIww49VhKuxi/LzXi+rR5yFze9TpN4t1m+xeuUyce4WbnoUHgTs9i0yuhfN9fX7cp/eo4aCUFVlu9DKbtPpWzQSLJ0BKWXJKQG88CIXxIVLvzg+f0By04yeXC0qNkF3/eEuE65U7x3HjrG5Nzht1dZJXTXVxs9fYw6jxxbB3eYfdG6vlOF7Lj4kVF+n9sNnFXXyy6uuRHuCKXOQ9mpXZjfsxNu82sSd3veTYPGcmbZLdJOp/Wo7tqqtzCnj590WJUx8rv5rBqyZ+ijrux+sPLylumpceAsagcsV17z5ggxpGR2ahU5/QaqVl45Mox322K73UyT2rz3PrkNcORkmhx9bfeaoJPm2+ESOcngblizzqKdU5tP/i9c7CMG1Uexja18BGRGy+s/h2vysHDxmZUB6UG1Akzc0kW1nG+JWEC078z5wVwFGLUzPIslxP0vw7w+D28sJ2xy0tqNyadJu6PjJmLy1L5SNCujeWL5Tzu76loHLvTAJ7XEaz+vjEyzTuR4Nm0/rbVNmrYoF0QOfjtYRhBy40onejByptICvx7OqBggcusA8lq9wAX356R1FcYiD/6CsHgAjQnGCl3TfGuFLiREwnnweV1vsBl2LO4f2psR+6uWHQzOjttGIz9GAIFjknw4YGJXQecDpJ9jBhlnvKat2tQtcCVMnm6q6L0DtezOw2S7FKiZY+tpN1BAwROCa+8Jrkdn6jiZFDC1oVFzisTUXmDVl/2a0eF48pVWetQYrbXyT8dDxACL6k/FKNm7rjtujPln9+OddNITBpqIjppzEKM+6hcmBEEQBEEQBEEQBEEQBEEQBEEQBBkUfwC7ATDmuNbOWAAAAABJRU5ErkJggg==" alt="Logo" width={60} height={60} />
+          {/* <span>Company</span> */}
         </div>
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
@@ -37,22 +36,22 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <section id="features" className="features">
-        <h2>Why Choose Us?</h2>
+        <h2>Over views our services </h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="icon">🚀</div>
-            <h3>Fast Performance</h3>
-            <p>Blazing-fast speed with optimized architecture.</p>
+            <h3>Technology Consulting</h3>
+            <p>Expertise in a IT consultancy for the many companies, for their different working areas.</p>
           </div>
           <div className="feature-card">
             <div className="icon">🔒</div>
-            <h3>Security First</h3>
-            <p>Your data is protected with the latest security standards.</p>
+            <h3>Cloud solutions & IT security</h3>
+            <p>Expertise in cloud solutions and IT security for various companies in different sectors.</p>
           </div>
           <div className="feature-card">
             <div className="icon">📱</div>
-            <h3>100% Responsive</h3>
-            <p>Optimized for all devices and screen sizes.</p>
+            <h3>Data Tracking Security</h3>
+            <p>Expertise in securing data tracking systems for companies across various industries.</p>
           </div>
         </div>
       </section>
@@ -63,15 +62,15 @@ export default function LandingPage() {
         <div className="testimonial-grid">
           <div className="testimonial-card">
             <p>"Absolutely incredible! The performance is top-notch."</p>
-            <h4>- Sarah M.</h4>
+            <h4>- hajar. -</h4>
           </div>
           <div className="testimonial-card">
             <p>"A game-changer for our business. Highly recommend!"</p>
-            <h4>- Alex T.</h4>
+            <h4>- ANAS. -</h4>
           </div>
           <div className="testimonial-card">
             <p>"Superb experience with exceptional customer service."</p>
-            <h4>- Linda W.</h4>
+            <h4>- RAJAA. -</h4>
           </div>
         </div>
       </section>
@@ -104,31 +103,24 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer>
- 
-  <div class="footer-top">
-   
-    {/* <div class="footer-links">
-      <a href="#">About Us</a>
-      <a href="#">Services</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
-    </div> */}
-    
-   
-    {/* <div class="social-icons">
-      <a href="#" target="_blank" class="fab fa-twitter"></a>
-      <a href="#" target="_blank" class="fab fa-facebook-f"></a>
-      <a href="#" target="_blank" class="fab fa-linkedin-in"></a>
-      <a href="#" target="_blank" class="fab fa-github"></a>
-    </div> */}
-  </div>
-
-  
-  <div class="footer-bottom">
-    <p>&copy; 2024 Company. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
-  </div>
-</footer>
-
+        <div className="footer-top">
+          <div className="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Services</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </div>
+          <div className="social-icons">
+            <a href="#" target="_blank" className="fab fa-twitter"></a>
+            <a href="#" target="_blank" className="fab fa-facebook-f"></a>
+            <a href="#" target="_blank" className="fab fa-linkedin-in"></a>
+            <a href="#" target="_blank" className="fab fa-github"></a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; 2024 Company. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a></p>
+        </div>
+      </footer>
     </div>
   );
 }
