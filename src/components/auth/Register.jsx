@@ -1,110 +1,137 @@
 "use client"
 
 import { useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 import "./Auth.css"
 
 const Register = () => {
-  const [username, setUsername] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  })
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+  }
+
+  const validateForm = () => {
+    const newErrors = {}
+    if (!formData.username) newErrors.username = "Username is required"
+    if (!formData.email) newErrors.email = "Email is required"
+    if (!formData.password) newErrors.password = "Password is required"
+    else if (formData.password.length < 6) newErrors.password = "Password must be at least 6 characters"
+
+    if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = "Passwords do not match"
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError("")
 
-    if (password !== confirmPassword) {
-      setError("Les mots de passe ne correspondent pas")
-      return
-    }
+    if (!validateForm()) return
+
+    setIsSubmitting(true)
 
     try {
-      setLoading(true)
-      const response = await fetch("http://localhost:5000/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, email, password }),
-      })
+      // Remove confirmPassword before sending to API
+      const { confirmPassword, ...userData } = formData
 
-      const data = await response.json()
+      await axios.post("http://localhost:3000/users/register", userData)
 
-      if (!response.ok) {
-        throw new Error(data.message || "Erreur lors de l'inscription")
-      }
-
+      // Redirect to login page after successful registration
       navigate("/login")
     } catch (err) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
+      console.error("Registration error:", err)
+      setErrors({
+        submit: err.response?.data?.message || "Registration failed. Please try again.",
+      })
+      setIsSubmitting(false)
     }
   }
 
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <div className="auth-header">
-          <h2>Créer un compte</h2>
-        </div>
-        <div className="auth-content">
-          {error && (
-            <div className="alert alert-error">
-              <p>{error}</p>
-            </div>
-          )}
-          <form onSubmit={handleSubmit} className="auth-form">
-            <div className="form-group">
-              <label htmlFor="username">Nom d'utilisateur</label>
-              <input
-                id="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Mot de passe</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Confirmer le mot de passe</label>
-              <input
-                id="confirmPassword"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary" disabled={loading}>
-              {loading ? "Inscription en cours..." : "S'inscrire"}
-            </button>
-          </form>
-        </div>
+        <h1>Register</h1>
+
+        {errors.submit && <div className="error-message submit-error">{errors.submit}</div>}
+
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Choose a username"
+              className={errors.username ? "error" : ""}
+            />
+            {errors.username && <div className="error-message">{errors.username}</div>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              className={errors.email ? "error" : ""}
+            />
+            {errors.email && <div className="error-message">{errors.email}</div>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Create a password"
+              className={errors.password ? "error" : ""}
+            />
+            {errors.password && <div className="error-message">{errors.password}</div>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              placeholder="Confirm your password"
+              className={errors.confirmPassword ? "error" : ""}
+            />
+            {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
+          </div>
+
+          <button type="submit" className="btn btn-auth" disabled={isSubmitting}>
+            {isSubmitting ? "Registering..." : "Register"}
+          </button>
+        </form>
+
         <div className="auth-footer">
-          <p>
-            Vous avez déjà un compte?{" "}
-            <Link to="/login" className="link">
-              Se connecter
-            </Link>
-          </p>
+          Already have an account? <Link to="/login">Login</Link>
         </div>
       </div>
     </div>

@@ -1,140 +1,96 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { useNavigate, useParams, Link } from "react-router-dom"
-import "./Posts.css"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
 const PostForm = () => {
-  const { id } = useParams()
   const navigate = useNavigate()
-  const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [initialLoading, setInitialLoading] = useState(false)
+  const [imageURL, setImageURL] = useState("")
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const isEditing = !!id
+  const validateForm = () => {
+    const newErrors = {}
+    if (!imageURL) newErrors.image_url = "Image URL is required"
+    if (!content) newErrors.content = "Content is required"
 
-  useEffect(() => {
-    if (isEditing) {
-      fetchPost()
-    }
-  }, [isEditing])
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
-  const fetchPost = async () => {
+  const postData = async (data) => {
     try {
-      setInitialLoading(true)
-      const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-
-      if (!response.ok) {
-        throw new Error("Erreur lors du chargement du post")
-      }
-
-      const data = await response.json()
-      setTitle(data.title)
-      setContent(data.content)
+      const response = await axios.post("http://localhost:3000/posts", data)
+      navigate(`/posts/${response.data._id}`)
     } catch (err) {
-      setError(err.message)
-    } finally {
-      setInitialLoading(false)
+      console.error("Error creating post:", err)
+      setErrors({ submit: "Failed to create post. Please try again." })
+      setIsSubmitting(false)
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setError("")
+    if (!validateForm()) return
 
-    if (!title.trim() || !content.trim()) {
-      setError("Tous les champs sont obligatoires")
-      return
+    setIsSubmitting(true)
+
+    const data = {
+      image_url: imageURL,
+      content: content,
+      user_id: "123",
+      createdAt: "1234",
     }
+    postData(data)
 
-    try {
-      setLoading(true)
-
-      const url = isEditing ? `http://localhost:5000/api/posts/${id}` : "http://localhost:5000/api/posts"
-
-      const method = isEditing ? "PUT" : "POST"
-
-      const response = await fetch(url, {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({ title, content }),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.message || "Erreur lors de la sauvegarde du post")
-      }
-
-      navigate(isEditing ? `/posts/${id}` : `/posts/${data.id}`)
-    } catch (err) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
+    console.log("Content:", content)
+    console.log("Image URL:", imageURL)
   }
-
-  if (initialLoading) return <div className="loading">Chargement du post...</div>
 
   return (
     <div className="post-form-container">
-      <Link to="/" className="back-link">
-        ← Retour aux posts
-      </Link>
+      <h1>Create New Post</h1>
 
-      <div className="post-form-card">
-        <div className="post-form-header">
-          <h1>{isEditing ? "Modifier le post" : "Créer un nouveau post"}</h1>
+      {errors.submit && <div className="error-message submit-error">{errors.submit}</div>}
+
+      <form onSubmit={handleSubmit} className="post-form">
+        <div className="form-group">
+          <label htmlFor="image_url">Image URL</label>
+          <input
+            type="text"
+            id="image_url"
+            value={imageURL}
+            onChange={(e) => setImageURL(e.target.value)}
+            placeholder="Enter image URL"
+            className={errors.image_url ? "error" : ""}
+          />
+          {errors.image_url && <div className="error-message">{errors.image_url}</div>}
         </div>
-        <div className="post-form-content">
-          {error && (
-            <div className="alert alert-error">
-              <p>{error}</p>
-            </div>
-          )}
-          <form onSubmit={handleSubmit} className="post-form">
-            <div className="form-group">
-              <label htmlFor="title">Titre</label>
-              <input
-                id="title"
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Titre de votre post"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="content">Contenu</label>
-              <textarea
-                id="content"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Contenu de votre post"
-                rows={10}
-                required
-              />
-            </div>
-            <div className="form-actions">
-              <button type="button" className="btn btn-secondary" onClick={() => navigate("/")}>
-                Annuler
-              </button>
-              <button type="submit" className="btn btn-primary" disabled={loading}>
-                {loading ? "Sauvegarde en cours..." : isEditing ? "Mettre à jour" : "Publier"}
-              </button>
-            </div>
-          </form>
+
+        <div className="form-group">
+          <label htmlFor="content">Content</label>
+          <textarea
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="Write your post content here..."
+            rows={6}
+            className={errors.content ? "error" : ""}
+          />
+          {errors.content && <div className="error-message">{errors.content}</div>}
         </div>
-      </div>
+
+        <div className="form-actions">
+          <button type="button" onClick={() => navigate("/")} className="btn btn-cancel" disabled={isSubmitting}>
+            Cancel
+          </button>
+          <button type="submit" className="btn btn-submit" disabled={isSubmitting}>
+            {isSubmitting ? "Creating..." : "Create Post"}
+          </button>
+        </div>
+      </form>
     </div>
   )
 }

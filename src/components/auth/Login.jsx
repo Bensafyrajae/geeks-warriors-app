@@ -1,86 +1,104 @@
 "use client"
 
 import { useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
 import "./Auth.css"
 
 const Login = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  })
+  const [errors, setErrors] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({
+      ...formData,
+      [name]: value,
+    })
+  }
+
+  const validateForm = () => {
+    const newErrors = {}
+    if (!formData.email) newErrors.email = "Email is required"
+    if (!formData.password) newErrors.password = "Password is required"
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError("")
+
+    if (!validateForm()) return
+
+    setIsSubmitting(true)
 
     try {
-      setLoading(true)
-      const response = await fetch("http://localhost:5000/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      })
+      const response = await axios.post("http://localhost:3000/users/login", formData)
 
-      const data = await response.json()
+      // Store the token in localStorage
+      localStorage.setItem("token", response.data.token)
+      localStorage.setItem("user", JSON.stringify(response.data.user))
 
-      if (!response.ok) {
-        throw new Error(data.message || "Erreur de connexion")
-      }
-
-      localStorage.setItem("token", data.token)
-      localStorage.setItem("user", JSON.stringify(data.user))
-
+      // Redirect to home page
       navigate("/")
     } catch (err) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
+      console.error("Login error:", err)
+      setErrors({
+        submit: err.response?.data?.message || "Login failed. Please check your credentials.",
+      })
+      setIsSubmitting(false)
     }
   }
 
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <div className="auth-header">
-          <h2>Connexion</h2>
-        </div>
-        <div className="auth-content">
-          {error && (
-            <div className="alert alert-error">
-              <p>{error}</p>
-            </div>
-          )}
-          <form onSubmit={handleSubmit} className="auth-form">
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Mot de passe</label>
-              <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary" disabled={loading}>
-              {loading ? "Connexion en cours..." : "Se connecter"}
-            </button>
-          </form>
-        </div>
+        <h1>Login</h1>
+
+        {errors.submit && <div className="error-message submit-error">{errors.submit}</div>}
+
+        <form onSubmit={handleSubmit} className="auth-form">
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              className={errors.email ? "error" : ""}
+            />
+            {errors.email && <div className="error-message">{errors.email}</div>}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Enter your password"
+              className={errors.password ? "error" : ""}
+            />
+            {errors.password && <div className="error-message">{errors.password}</div>}
+          </div>
+
+          <button type="submit" className="btn btn-auth" disabled={isSubmitting}>
+            {isSubmitting ? "Logging in..." : "Login"}
+          </button>
+        </form>
+
         <div className="auth-footer">
-          <p>
-            Vous n'avez pas de compte?{" "}
-            <Link to="/register" className="link">
-              S'inscrire
-            </Link>
-          </p>
+          Don't have an account? <Link to="/register">Register</Link>
         </div>
       </div>
     </div>

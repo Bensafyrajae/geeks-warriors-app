@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Modal ,Group ,Button } from "@mantine/core";
 
 export default function LandingPage() {
@@ -48,11 +49,11 @@ export default function LandingPage() {
   console.log(opened)
   return (
     <>
-      <Modal
+      {/* <Modal
         opened={opened}
         onClose={() => setOpened(false)}
         title="Add New Content"
-        size="md"
+          size="md"
       >
         <input
           label="Content"
@@ -70,7 +71,7 @@ export default function LandingPage() {
         <Group position="right" mt="md">
           <Button onClick={handleSubmit}>Submit</Button>
         </Group>
-      </Modal>
+      </Modal> */}
     <div className="landing-page">
       {/* Navigation */}
       <nav className="nav-bar">
@@ -84,11 +85,16 @@ export default function LandingPage() {
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
+          
         </ul>
         <div className="auth-buttons">
-          <button className="login-btn" onClick={()=>{
-            setOpened(true)
-          }}>Create a post</button>
+        <Link to="/Login">
+        <button>Se connecter</button>
+      </Link>
+     
+      <Link to="/Register">
+        <button>S'inscrire</button>
+      </Link>
           
         </div>
       </nav>
