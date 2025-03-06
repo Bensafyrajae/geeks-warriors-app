@@ -74,7 +74,7 @@ export default function LandingPage() {
       </Modal> */}
     <div className="landing-page">
       {/* Navigation */}
-      <nav className="nav-bar">
+      <nav className=" d-flex justify-content-between ">
         <div className="logo">
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAO4AAACUCAMAAACjieW3AAAAclBMVEX///8Bk971/P4Aj92KxeoAjdwAkd0AitsAhdoAh9q62fLr9fvz+f35/P7a6vjC3fMsl96z1fBAouKbye2Du+jN5PXd7vlmq+SLwOrm8fqRxOterOSfze2SyOp0tuZqseVWpuJToOEzneF4s+fi9furzu4UPvirAAAEjklEQVR4nO2bC3OiMBCAC+kGeT8ElMcB0vr//+JpNmhpvRNt0ODsNx3bTktml2w2+0je3giCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIIgn4wZO/ef9T+0E7rNFmRsvbCJmWQAMwAIWtbH/bJFmw80aewXcOMOZvWqyl5xk16lsMH4Cdhe/nsJhyy4pKxSGjfNs8RSTRmMr5nyksLF9pQkuOnZSj8PquIDlt9Mi7oJnC6mMMIKTWpCkzqdrmqbrOmkCTE4zZ1H4bDEV4UQMlWXGrsxHf8rLnQGDfcdPkk8todSWQ1d7P/5qrjtp06+hb9aDnNpvMzuQl8P7YNmDZVOPKbWF/p+bjR/2OL8sWrx/bi3UpP+f5y2kL4PNw+Sahxi15f2VeYvk+i0fI9ZMuKgGN65ZqYv2zJNFb79bVIJf90EZvhjYLjhFChKhg1VP+N+9CDj4f9e45qxxxjZTHK7biu0I1oud3qICsXCn5TuOMGeWFDNLNRuhsE/4+BlLXaRBy19q7OyXYnKjqbEhTq+VLtOavQxtubscO154IEFnNdEYdCKIy48OI4d08kMNOqupr0cbnDYxGDCMMKbsQvIxEUraC1u8TsLPxRkeTU9zCvGC7PcZZVNO3tmjqlR/w8ZiCE9ezSecavw9HxccWWJOf1oEzqybTTrVmOW5BsfgWIm6aa7QNSfmQrYiPz3V4CyjKuvYieNbKhQYYhttWsb5AlROh7KT1ddBcbvACVZxDmYR7VrtS+21hdoCq++rwkh1Rc7IeaL3jhTiuuWsujcuOqsrBrIrjSOOokNtYXoY9Z1k1Eo5xM8a19rXTNYj7h+it60jcHLvTNvas6xcwG8Smv1akFaG9AIHW9HTY/lrUXNkk/Ofy6McePO9IogTawhCtbTnomMiIVBlfH5to99inY7ljdAWsn3cEDJeIR92YQ3zfX9rKZ3cI27FdDVnWYnYKa1E5GKBGFaqXX3DRUfVqh0Vq1fc0K72nK+E3e0VD9tgfUP1sL8mRHVVN2ixlXJ/VDoXtXDM8Kl63I2wZtCt74tBhnp1se2y0i1VmEvdDNXVLXKOMcpQ7kI/ha+y1qrH/SWZcFVMeTxvorq6NfULoa5xf6r7DzRVFw8b8J3qcdGY7emdiMfgNzBLeOugq9LuwBUesbmh/zWNFNXVLgcMMLzt1c6DtxOj6ne8zEsxSWiUxnt4PsVq9Mt4Q5xeUJrxbrAnqF/COzRMOCiUTZx2MEDL8k0mD76p0zfGLjFol/8J1vKcLt+rWb97PPjLKh0n92DOLfb/OPtQ4J+9LZcnDHXLDwb8ftA3an6ZLPjxTrYSWKNGuBlwo9PFAqsvM9cz76II02jom0Cn3yZ0wj3foOHWyh419CbDv1ydg1vOOjweNx1diOL38OVxqLSLp8Z4+8T61ra8G+Bb3WpyPwm2oERhZnehxuv2hB9s+fji6u1wWEXLufhphm3E4AA7frLj7WT2/bfha/iQPzJxk9lotEtxr5Bncf1+F3GoZxxFEARBEARBEARBEARBEARBEARBEARBEARBEATxevwF5PMzewDtvA0AAAAASUVORK5CYII=" alt="Logo" width={80} height={30} />
          
@@ -88,30 +88,37 @@ export default function LandingPage() {
           
         </ul>
         <div className="auth-buttons">
-        <Link to="/Login">
-        <button>Se connecter</button>
+        <Link to="/">
+        <button className="login-btn ">Se connecter</button>
       </Link>
-     
+    
+        <Link to="/postList/" >
+        <button className="login-btn " >Posts</button>
+           
+        </Link>
+    
       <Link to="/Register">
-        <button>S'inscrire</button>
+        <button className="login-btn ">S'inscrire</button>
       </Link>
           
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="hero">
+      <section id="home" className="hero1">
+      <h2>Empower Your Business</h2>
+      <div  className="hero" >
         <div className="hero-content">
-          <h2>Empower Your Business</h2>
-          <p>IWhy AWS : une infrastructure cloud évolutive, sécurisée et performante. Réduisez vos coûts, simplifiez la gestion et accélérez l’innovation. Passez au cloud dès aujourd’hui !" 🚀☁️</p>
+          <p>IWhy AWS : une infrastructure cloud évolutive, sécurisée et performante. Réduisez vos coûts, simplifiez la gestion et accélérez l’innovation. Passez au cloud dès aujourd’hui !"</p>
           <button className="login-btn btn">Get Started</button>
         </div>
         <div className="hero-image">
-          <img className="image" src="https://www.shutterstock.com/image-photo/cloud-service-files-storage-transfer-600nw-2492224549.jpg" alt="Hero" />
+          <img className="image" src="https://media.istockphoto.com/id/1809655265/fr/photo/technologie-futuriste-concept-visualisation-circuit-imprim%C3%A9-processeur-puce-%C3%A9lectronique.webp?a=1&b=1&s=612x612&w=0&k=20&c=M8oxqfB7mP-0-wwKDkZMdauNwS3FK9-Qc0R7bj4fu2k=" alt="Hero" />
+        </div>
         </div>
       </section>
 
-      {/* Section Features */}
+      {/* Section Features
       <section id="features" className="features">
           <h2>Why Choose Us?</h2>
           <div className="features-grid">
@@ -131,7 +138,7 @@ export default function LandingPage() {
               <p>Optimized for all devices and screen sizes.</p>
             </div>
           </div>
-        </section>
+        </section> */}
 
       
 
@@ -143,22 +150,17 @@ export default function LandingPage() {
             
             <h4>🔐 Securing Access</h4>
             <p>Use IAM (Identity and Access Management) to control access to AWS services and resources.</p>
-            <br></br>
-            <p>Implement MFA (Multi-Factor Authentication) for additional security when accessing the AWS Management Console.</p>
+
           </div>
           <div className="testimonial-card">
             <h4>💻 Adding a Compute Layer Using Amazon EC2</h4>
             <p>Choose the appropriate Amazon Machine Image (AMI) for your EC2 instance.</p>
-            <br></br>
-            <p>Configure security groups to control inbound and outbound traffic to the EC2 instance.</p>
           </div>
           <div className="testimonial-card">
             <h4>♻Adding a Compute Layer Using Amazon EC2</h4>
             <p>Choose the appropriate database service based on your needs, such as Amazon RDS, Amazon DynamoDB, or Amazon Aurora.</p>
-            <br></br>
-            <p>Implement high availability and disaster recovery solutions for the database layer using features like Multi-AZ deployments and automated backups.</p>            
           </div>
-          <div className="testimonial-card">
+          {/* <div className="testimonial-card">
             <h4>🛜 Connecting Networks</h4>
             <p>Utilize Amazon VPC to create and manage virtual private networks.</p>
             <br></br>
@@ -175,14 +177,19 @@ export default function LandingPage() {
             <p>Design for high availability by utilizing multiple Availability Zones and implementing fault-tolerant architectures.</p>
             <br></br>
             <p>Utilize AWS Trusted Advisor to identify potential cost savings, security vulnerabilities, and performance improvements.</p>            
-          </div>
+          </div> */}
         </div>
       </section>
 
       {/* FAQ Section */}
       <section id="faq" className="faq">
         <h2>Frequently Asked Questions</h2>
-        <div className="faq-item">
+      <div  className="FAQ-Section ">
+      <div className="hero-image faq-card1">
+          <img className="image" src="https://plus.unsplash.com/premium_photo-1688678097506-6c12a0376238?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGlvdHxlbnwwfHwwfHx8MA%3D%3D " alt="Hero" />
+        </div>
+      
+       <div className="faq-card"> <div className="faq-item">
           <h3>How does the platform work?</h3>
           <p>Our platform simplifies your workflow with advanced automation.</p>
         </div>
@@ -197,6 +204,8 @@ export default function LandingPage() {
         <div className="faq-item">
           <h3>How does the platform work?</h3>
           <p>Our platform simplifies your workflow with advanced automation.</p>
+        </div>
+        </div>
         </div>
       </section>
 

@@ -16,9 +16,9 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5%;
+  padding: 5px;
   background: rgba(255, 255, 255, 0.95);
-  /* position: fixed; */
+  position: fixed;
   width: 100%;
   top: 0;
   box-shadow: 0 2px 10px rgba(11, 11, 11, 0.1);
@@ -46,21 +46,29 @@ nav {
 }
 
 /* Hero */
-.hero {
+.hero1 {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 50px;
-  background-color: #e9ecef;
+  background-color: #f0f2f4;
+}
+.hero{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 h2{
-  color: #1d4ed8;
+  color: #98bde6;
   text-align: center;
+  padding: 50px;
 }
 .hero-content {
   max-width: 600px;
   z-index: 1;
-  padding: 50px;
+  /* padding: 50px; */
   text-align: left;
 }
 
@@ -79,7 +87,7 @@ h2{
 
 .hero-content .btn {
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: #98bde6;
   color: white;
   border: none;
   border-radius: 4px;
@@ -87,7 +95,7 @@ h2{
 }
 
 .hero-content .btn:hover {
-  background-color: #0056b3;
+  background-color: #98bde6;
 }
 
 .hero-image img {
@@ -140,7 +148,7 @@ h2{
 
 .login-btn {
   padding: 0.5rem 1rem;
-  background: #5c8cf3;
+  background: #98bde6;
   color: white;
   border-radius: 8px;
   border-color: #e0f2fe;
@@ -235,7 +243,7 @@ h2{
 
 .contact h2 {
   font-size: 2rem;
-  color: #333;
+  color: #98bde6;
   margin-bottom: 20px;
 }
 
@@ -273,7 +281,7 @@ h2{
 }
 
 .submit-button {
-  background-color: #007bff;
+  background-color: #98bde6;
   color: white;
   padding: 12px;
   font-size: 1rem;
@@ -309,11 +317,17 @@ h2{
   padding: 60px 20px;
   text-align: center;
 }
+.FAQ-Section{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
 
 .faq h2 {
   font-size: 2rem;
   margin-bottom: 30px;
-  color: #333;
+  color: #98bde6;
 }
 
 .faq-item {
@@ -321,11 +335,19 @@ h2{
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   margin: 15px auto;
-  padding: 20px;
+  padding: 10px;
   width: 80%;
   max-width: 700px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+}
+.faq-card{
+  width: 55%;
+
+}
+.faq-card1{
+  width: 30%;
+  
 }
 
 .faq-item:hover {
@@ -545,7 +567,7 @@ h2{
   transform: translateY(0);
 }
 h2{
-  color: #1d4ed8;
+  color: #88b9f2;
   text-align: center;
 }
 /* Testimonials */

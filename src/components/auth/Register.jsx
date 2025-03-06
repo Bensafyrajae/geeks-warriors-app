@@ -18,19 +18,14 @@ const Register = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value,
-    })
+    setFormData({ ...formData, [name]: value })
   }
 
   const validateForm = () => {
     const newErrors = {}
     if (!formData.username) newErrors.username = "Username is required"
     if (!formData.email) newErrors.email = "Email is required"
-    if (!formData.password) newErrors.password = "Password is required"
-    else if (formData.password.length < 6) newErrors.password = "Password must be at least 6 characters"
-
+    if (!formData.password) newErrors.password = "Password must be at least 6 characters"
     if (formData.password !== formData.confirmPassword) newErrors.confirmPassword = "Passwords do not match"
 
     setErrors(newErrors)
@@ -39,24 +34,15 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     if (!validateForm()) return
 
     setIsSubmitting(true)
-
     try {
-      // Remove confirmPassword before sending to API
       const { confirmPassword, ...userData } = formData
-
-      await axios.post("http://localhost:3000/users/register", userData)
-
-      // Redirect to login page after successful registration
+      await axios.post("http://localhost:3000/auth/register", userData)
       navigate("/login")
     } catch (err) {
-      console.error("Registration error:", err)
-      setErrors({
-        submit: err.response?.data?.message || "Registration failed. Please try again.",
-      })
+      setErrors({ submit: err.response?.data || "Registration failed. Try again." })
       setIsSubmitting(false)
     }
   }
@@ -65,78 +51,42 @@ const Register = () => {
     <div className="auth-container">
       <div className="auth-card">
         <h1>Register</h1>
-
-        {errors.submit && <div className="error-message submit-error">{errors.submit}</div>}
+        {errors.submit && <div className="error-message">{errors.submit}</div>}
 
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              placeholder="Choose a username"
-              className={errors.username ? "error" : ""}
-            />
+            <label>Username</label>
+            <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Choose a username" />
             {errors.username && <div className="error-message">{errors.username}</div>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              className={errors.email ? "error" : ""}
-            />
+            <label>Email</label>
+            <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Enter your email" />
             {errors.email && <div className="error-message">{errors.email}</div>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Create a password"
-              className={errors.password ? "error" : ""}
-            />
+            <label>Password</label>
+            <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Create a password" />
             {errors.password && <div className="error-message">{errors.password}</div>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              placeholder="Confirm your password"
-              className={errors.confirmPassword ? "error" : ""}
-            />
+            <label>Confirm Password</label>
+            <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="Confirm your password" />
             {errors.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
           </div>
 
-          <button type="submit" className="btn btn-auth" disabled={isSubmitting}>
+          <button type="submit" className="btn-auth" disabled={isSubmitting || !formData.username || !formData.email || !formData.password || formData.password !== formData.confirmPassword}>
             {isSubmitting ? "Registering..." : "Register"}
           </button>
         </form>
 
-        <div className="auth-footer">
-          Already have an account? <Link to="/login">Login</Link>
-        </div>
+        <p>Already have an account? <Link to="/login">Login</Link></p>
       </div>
     </div>
   )
 }
 
 export default Register
-
